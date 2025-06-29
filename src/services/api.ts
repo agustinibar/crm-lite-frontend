@@ -28,7 +28,8 @@ api.interceptors.response.use(
       // Si hay error de autenticación
       if (typeof window !== 'undefined') {
         localStorage.removeItem('token');
-        window.location.href = '/login'; // Redirige al login
+        
+        window.location.href = '/'; // Redirige al login
       }
     }
     return Promise.reject(error);
