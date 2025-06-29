@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
 export default function Login() {
   const router = useRouter();
 
-  const handleLogin = () => {
+  const handleLogin = (event: React.FormEvent) => {
+    event?.preventDefault();
     // Simulación de login exitoso
     localStorage.setItem("token", "ejemplo.jwt.token");
     router.push("/dashboard");
@@ -20,36 +23,25 @@ export default function Login() {
         </h1>
         <form className="space-y-5">
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="email">
-              Correo electrónico
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-black outline-none"
-              placeholder="tucorreo@ejemplo.com"
-              required
-            />
+            <Input
+              label="User"
+              id="username"
+              type="text"
+              placeholder="username"
+            ></Input>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2" htmlFor="password">
-              Contraseña
-            </label>
-            <input
+            <Input
+              label="Password"
               id="password"
               type="password"
-              className=" w-full px-4 py-2 border rounded-lg text-black outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="********"
-              required
-            />
+              placeholder="*******"
+            ></Input>
           </div>
-          <button
-            type="button"
-            onClick={handleLogin}
-            className=" cursor-pointer w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
-          >
-            Iniciar sesión
-          </button>
+
+          <Button onClick={handleLogin} type="submit">
+            Login
+          </Button>
         </form>
       </div>
     </div>

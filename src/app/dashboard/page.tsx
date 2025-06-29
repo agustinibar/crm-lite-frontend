@@ -1,3 +1,3 @@
 export default function DashboardHome() {
-  return <h2>Bienvenido al Dashboard</h2>;
+  return <h2 className="text-black">Bienvenido al Dashboard</h2>;
 }
